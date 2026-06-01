@@ -32,3 +32,13 @@ annotate RiskManagementService with @requires :
 [
     'authenticated-user'
 ];
+
+annotate RiskManagementService.Risks with @Restrict: [
+    { grant: 'READ', to: 'RiskViewer' },
+    { grant: ['CREATE', 'READ', 'UPDATE', 'DELETE', 'WRITE'], to: 'RiskManager' }
+];
+
+annotate RiskManagementService.Mitigations with @Restrict: [
+    { grant: 'READ', to: 'RiskViewer' },
+    { grant: ['CREATE', 'READ', 'UPDATE', 'DELETE', 'WRITE'], to: 'RiskManager' }
+]
